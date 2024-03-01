@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- css file -->
+        <link rel="stylesheet" href="./styles/output.css" />
+        <title>Weather</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav class="pt-[60px] flex items-center justify-between">
+                    <div class="relative w-[800px]">
+                        <img class="absolute left-7 top-[14px] w-[30px]" src="./images/search.svg" alt="icon">
+                        <input class="w-full h-[60px] px-[100px] rounded-[40px] outline-none bg-[#444444] shadow-[0px_0px_20px_5px_#00000040] text-white text-[18px]" type="text" placeholder="Search for your preffered city...">
+                    </div>
+                    <button class="px-[25px] py-[13px] rounded-[40px] flex text-[22px] shadow-[0px_0px_20px_5px_#00000040] font-extrabold text-white items-center gap-2 bg-[#4CBB17]">
+                        <img src="./images/currentLocationIcon.svg" alt="icon">
+                        <span>Current Location</span>
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <section class="py-[50px]">
+            <div class="container">
+                <div class="flex justify-between mb-[50px]">
+                    <div class="w-[510px] rounded-[30px] bg-[#444444] flex flex-col justify-center items-center py-[50px] shadow-[7px_7px_7px_4px_#00000060]">
+                        <p class="font-bold text-[36px] mb-[30px] text-white">Athens</p>
+                        <p id="date" class="font-bold text-[96px] text-white"></p>
+                        <p id="week" class="text-white text-[20px]">Thursday, 31 Aug</p>
+                    </div>
+                    
+                    <div id="weather-today" class="w-[780px] flex justify-between items-center rounded-[30px] py-[15px] px-[20px] bg-[#444444] shadow-[7px_7px_7px_4px_#00000060] text-white">
+                        
+                    </div>
+                </div>
+                <div class="flex justify-between">
+                    <div class="w-[414px] p-6 rounded-[30px] bg-[#444444] shadow-[7px_7px_7px_4px_#00000060] text-white font-semibold">
+                        <p class="font-bold text-[32px] text-center mb-3">5 Days Forecast:</p>
+                        <div id="weekly-weather">
+
+                        </div>
+                    </div>
+                    <div class="w-[880px] text-center rounded-[30px] py-[14px] bg-[#444444] shadow-[7px_7px_7px_4px_#00000060] text-white font-bold">
+                        <p class="text-[32px] mb-8">Hourly Forecast:</p>
+                        <div id="hourly-weather" class="flex gap-[15px] justify-center">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script src="./utilis.js"></script>
+    <script src="./index.js"></script>
+</html>
