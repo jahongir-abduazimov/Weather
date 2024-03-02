@@ -107,29 +107,30 @@ fetchData(baseURL, baseId)
 
 function renderDaylyWeather(data) {
     weatherToday.innerHTML = `
-    <div>
-    <p class="font-bold text-[80px]">${data.current.temp_c}°C</p>
-    <p class="font-semibold text-[20px] flex items-center gap-2 mb-[20px]">Feels like: <span class="text-[32px]">${Math.round(data.current.feelslike_c)}°C</span></p>
-    <div class="flex items-center gap-3 mb-5">
-        <img src="./images/sunrise-white 1.svg" alt="icon">
-        <div class="font-semibold">
-            <p>Sunrise</p>
-            <p>${data.forecast.forecastday[0].astro.sunrise}</p>
+        <div>
+            <p class="font-bold text-[50px] md:text-[80px]">${data.current.temp_c}°C</p>
+            <p class="font-semibold text-[20px] flex items-center gap-2 mb-[20px]">Feels like: <span class="text-[25px] md:text-[32px]">${Math.round(data.current.feelslike_c)}°C</span></p>
+            <div class="flex items-center gap-3 mb-5">
+                <img src="./images/sunrise-white 1.svg" alt="icon">
+                <div class="font-semibold">
+                    <p>Sunrise</p>
+                    <p>${data.forecast.forecastday[0].astro.sunrise}</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <img src="./images/sunset-white 1.svg" alt="icon">
+                <div class="font-semibold">
+                    <p>Sunset</p>
+                    <p>${data.forecast.forecastday[0].astro.sunset}</p>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="flex items-center gap-3">
-        <img src="./images/sunset-white 1.svg" alt="icon">
-        <div class="font-semibold">
-            <p>Sunset</p>
-            <p>${data.forecast.forecastday[0].astro.sunset}</p>
+        <div class="flex flex-col items-center w-[120px] md:w-[180px]">
+            <img class="w-[100px] md:w-[150px] mb-10" src="${data.current.condition.icon}" alt="icon">
+            <p class="text-[20px] md:text-[32px] font-semibold">${data.current.condition.text}</p>
         </div>
-    </div>
-    </div>
-    <div class="flex flex-col items-center">
-        <img class="w-[150px] mb-10" src="${data.current.condition.icon}" alt="icon">
-        <p class="text-[32px] font-semibold">${data.current.condition.text}</p>
-    </div>
-    <div class="grid grid-cols-2 gap-x-4 gap-y-[20px] w-[247px]">
+
+    <div class="hidden md:grid grid-cols-4 md:grid-cols-2 gap-x-4 gap-y-[20px] md:w-[247px]">
         <div class="flex flex-col items-center">
             <img class="mb-2" src="./images/humidity 1.svg" alt="">
             <p class="font-semibold text-[20px]">${data.current.humidity}%</p>
@@ -186,42 +187,42 @@ function renderWeeklyWeather(data) {
 
 function renderHourlyWeather(el) {
     hourlyWeather.innerHTML = `
-        <div class="w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
+        <div class="min-w-[110px] md:w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
             <p class="text-[24px]">04:00</p>
             <img src="${el.forecast.forecastday[0].hour[4].condition.icon}" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[4].temp_c)}°C</p>
             <img class="rotate-[${el.forecast.forecastday[0].hour[4].wind_degree}deg]" src="./images/navigation 1.svg" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[4].wind_kph)} km/h</p>
         </div>
-        <div class="w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
+        <div class="min-w-[110px] md:w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
             <p class="text-[24px]">08:00</p>
             <img src="${el.forecast.forecastday[0].hour[8].condition.icon}" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[8].temp_c)}°C</p>
             <img class="rotate-[${el.forecast.forecastday[0].hour[8].wind_degree}deg]" src="./images/navigation 1.svg" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[8].wind_kph)} km/h</p>
         </div>
-        <div class="w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
+        <div class="min-w-[110px] md:w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
             <p class="text-[24px]">12:00</p>
             <img src="${el.forecast.forecastday[0].hour[12].condition.icon}" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[12].temp_c)}°C</p>
             <img class="rotate-[${el.forecast.forecastday[0].hour[12].wind_degree}deg]" src="./images/navigation 1.svg" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[12].wind_kph)} km/h</p>
         </div>
-        <div class="w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
+        <div class="min-w-[110px] md:w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
             <p class="text-[24px]">16:00</p>
             <img src="${el.forecast.forecastday[0].hour[16].condition.icon}" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[16].temp_c)}°C</p>
             <img class="rotate-[${el.forecast.forecastday[0].hour[16].wind_degree}deg]" src="./images/navigation 1.svg" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[16].wind_kph)} km/h</p>
         </div>
-        <div class="w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
+        <div class="min-w-[110px] md:w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
             <p class="text-[24px]">20:00</p>
             <img src="${el.forecast.forecastday[0].hour[20].condition.icon}" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[20].temp_c)}°C</p>
             <img class="rotate-[${el.forecast.forecastday[0].hour[20].wind_degree}deg]" src="./images/navigation 1.svg" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[0].hour[20].wind_kph)} km/h</p>
         </div>
-        <div class="w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
+        <div class="min-w-[110px] md:w-[130px] h-[270px] flex flex-col items-center bg-[#373636] rounded-[40px] py-[13px] justify-between">
             <p class="text-[24px]">00:00</p>
             <img src="${el.forecast.forecastday[1].hour[0].condition.icon}" alt="">
             <p class="text-[20px]">${Math.round(el.forecast.forecastday[1].hour[0].temp_c)}°C</p>

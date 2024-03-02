@@ -63,7 +63,11 @@ body {
   line-height: inherit;
   /* 2 */
   background: rgb(26,25,25);
-background: linear-gradient(299deg, rgba(26,25,25,1) 0%, rgba(68,68,68,1) 67%, rgba(68,68,68,1) 100%);
+  background: linear-gradient(299deg, rgba(26,25,25,1) 0%, rgba(68,68,68,1) 67%, rgba(68,68,68,1) 100%);
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 .container {
