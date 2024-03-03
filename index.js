@@ -5,6 +5,7 @@ let week = $('#week');
 let weatherToday = $('#weather-today');
 let weeklyWeather = $('#weekly-weather');
 let hourlyWeather = $('#hourly-weather');
+let locationName = $('#location');
 
 let d = new Date()
 
@@ -92,18 +93,27 @@ let baseURL = 'https://api.weatherapi.com/v1';
 let baseId = 'bf1c5421a2ad4efb95b53623240103';
 
 async function fetchData(url, id) {
-    try {
-        let response = await fetch(`${url}/forecast.json?key=${id}&days=${5}&q=$Tashkent`)
-        let result = await response.json()
-        renderDaylyWeather(result);
-        renderWeeklyWeather(result);
-        renderHourlyWeather(result)
-    } catch (err) {
-        console.log(err);
-    }
+    window.navigator.geolocation.getCurrentPosition(async (data) => {
+        let lat = data.coords.latitude;
+        let lon = data.coords.longitude;
+        try {
+            let response = await fetch(`${url}/forecast.json?key=${id}&days=${5}&q=${lat},${lon}`)
+            let result = await response.json()
+            renderDaylyWeather(result);
+            renderWeeklyWeather(result);
+            renderHourlyWeather(result);
+            myPosition(result);
+        } catch (err) {
+            console.log(err);
+        }
+    })  
 }
 
 fetchData(baseURL, baseId)
+
+function myPosition(data) {
+    locationName.textContent = `${data.location.name}`
+}
 
 function renderDaylyWeather(data) {
     weatherToday.innerHTML = `
