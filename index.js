@@ -97,7 +97,7 @@ async function fetchData(url, id) {
         let lat = data.coords.latitude;
         let lon = data.coords.longitude;
         try {
-            let response = await fetch(`${url}/forecast.json?key=${id}&days=${5}&q=${lat},${lon}`)
+            let response = await fetch(`${url}/forecast.json?key=${id}&days=${3}&q=${lat},${lon}`)
             let result = await response.json()
             renderDaylyWeather(result);
             renderWeeklyWeather(result);
@@ -166,7 +166,7 @@ function renderDaylyWeather(data) {
 }
 
 function renderWeeklyWeather(data) {
-    weeklyWeather.innerHTML = `
+        weeklyWeather.innerHTML = `
                         <div class="flex items-center justify-between">
                             <img src="${data.forecast.forecastday[0].day.condition.icon}" alt="">
                             <p class="text-[24px]">${Math.round(data.forecast.forecastday[0].day.maxtemp_c)}°C</p>
@@ -181,16 +181,6 @@ function renderWeeklyWeather(data) {
                             <img src="${data.forecast.forecastday[2].day.condition.icon}" alt="">
                             <p class="text-[24px]">${Math.round(data.forecast.forecastday[2].day.maxtemp_c)}°C</p>
                             <p class="text-[20px]">${data.forecast.forecastday[2].date}</p>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <img src="${data.forecast.forecastday[3].day.condition.icon}" alt="">
-                            <p class="text-[24px]">${Math.round(data.forecast.forecastday[3].day.maxtemp_c)}°C</p>
-                            <p class="text-[20px]">${data.forecast.forecastday[3].date}</p>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <img src="${data.forecast.forecastday[4].day.condition.icon}" alt="">
-                            <p class="text-[24px]">${Math.round(data.forecast.forecastday[4].day.maxtemp_c)}°C</p>
-                            <p class="text-[20px]">${data.forecast.forecastday[4].date}</p>
                         </div>
     `
 }
